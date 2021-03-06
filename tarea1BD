@@ -1,0 +1,33 @@
+create table heroes(
+id_heroe numeric(4) constraint pk_heroes primary key,
+nombre varchar(100) not null, 
+correo varchar(100)not null 
+);
+
+create sequence pk_heroes_seq start 1 increment 1; 
+alter table heroes alter column id_heroe set default nextval ('pk_heroes_seq');
+alter table heroes add column apellido varchar(20) not null;
+
+insert into heroes
+(nombre, apellido, correo)
+values 
+('Wanda', 'Maximoff', 'wanda.maximoff@avengers.com'),
+('Pietro', 'Maximoff','pietro@mail.sokovia.ru'),
+('Erik', 'Lensherr', 'fuck_you_charles@broterhood.of.evil.mutants.space'), 
+('Charles', 'Xavier', 'i.am.secretely.filled.with.hubris@xavier-school-4-gifted-youngste.'),
+('Antony Edward', 'Stark', 'iamironman@avengers.gov'), 
+('Steve', 'Rogers', 'americas_ass@anti_avengers'),
+('The', 'Vision', 'vis@westview.sword.gov'), 
+('Clint', 'Barton', 'bul@lse.ye'), 
+('Natasja', 'Romanov', 'blackwidow@kgb.ru'), 
+('Thor', 'O', 'god_of_thunder-^_^@royalty.asgard.gov'), 
+('Logan', 'W', 'wolverine@cyclops_is_a_jerk.com'), 
+('Ororo', 'Monroe', 'ororo@wheater.co'), 
+('Scott', 'Summers', 'o@x'), 
+('Nathan', 'Summers', 'cable@xfact.or'), 
+('Groot', 'I am', 'iamgroot@asgardiansofthegalaxyledbythor.quillsux'), 
+('Nebula', 'T', 'idonthaveelektras@complex.thanos'),
+('Gamora', 'T', 'thefiercestwomaninthegalaxy@thanos.'), 
+('Rocket', 'M', 'shhhhhhhh@darknet.ru');
+
+select h.correo from heroes h where h.correo like '%.' or h.correo not like '%@%.%' or h.correo like '%^%';
